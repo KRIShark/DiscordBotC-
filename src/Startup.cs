@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using GetBeamMpServersDCBot.data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,10 @@ namespace DcBeamMpBot
                 .SetBasePath(AppContext.BaseDirectory)      // Specify the default location for the config file
                 .AddYamlFile("_config.yml");                // Add this (yaml encoded) file to the configuration
             Configuration = builder.Build();                // Build the configuration
+
+
+
+
         }
 
         public static async Task RunAsync(string[] args)
@@ -55,7 +60,8 @@ namespace DcBeamMpBot
             .AddSingleton<StartupService>()         // Add startupservice to the collection
             .AddSingleton<LoggingService>()         // Add loggingservice to the collection
             .AddSingleton<Random>()                 // Add random to the collection
-            .AddSingleton(Configuration);           // Add the configuration to the collection
+            .AddSingleton(Configuration)           // Add the configuration to the collection
+            .AddSingleton<GetBeamMpServers>();
         }
     }
 }
