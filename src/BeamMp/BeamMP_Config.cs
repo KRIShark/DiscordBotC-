@@ -8,6 +8,23 @@ namespace GetBeamMpServersDCBot.data
 {
     public class BeamMP_Config
     {
-        public string ApiUrl { get; set; }
+        public BeamMP_Config()
+        {
+
+        }
+
+        public BeamMP_Config(bool updateAuto)
+        {
+            UpdateAuto = updateAuto;
+        }
+
+        public BeamMP_Config(bool updateAuto, int messageIdOfTheStatusMessge)
+        {
+            UpdateAuto = updateAuto;
+            MessageIdOfTheStatusMessge = messageIdOfTheStatusMessge;
+        }
+
+        public bool UpdateAuto { get; set; } = false;
+        public int MessageIdOfTheStatusMessge { get; set; }
     }
 }
